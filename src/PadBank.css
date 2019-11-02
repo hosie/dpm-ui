@@ -1,0 +1,22 @@
+
+.pad-bank {
+  margin: 30px;
+  width: 690px;
+  height: 690px;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+}
+
+.pad-bank--pad-row {
+  border: 0;
+  width: 690px;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-around;
+}
