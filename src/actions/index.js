@@ -28,6 +28,13 @@ export const receiveSamples = (json) => ({
   samples: json
 })
 
+export const submitPadData = (padId, padData) => ({
+  type: 'SUBMIT_PAD_DATA',
+  padId,
+  padData
+
+})
+
 export function fetchSamples() {
 
   return function(dispatch) {

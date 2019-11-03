@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { changeSampleDirectory, fileSelected, cancelPendingChanges } from './actions'
+import { changeSampleDirectory, fileSelected, cancelPendingChanges, submitPadData } from './actions'
 
 import PadConfig from './PadConfig.js'
 const mapStateToProps = (state,ownProps) => {
@@ -11,9 +11,11 @@ const mapStateToProps = (state,ownProps) => {
   let childDirs = []
 
   let allFiles=[]
+  let padId=0
   if(state.padBank.activePadId !== null){
+    padId=state.padBank.activePadId
     isActive = true
-    mode = state.pads[state.padBank.activePadId].mode
+    mode = state.pads[padId].mode
     let activePadId = state.padBank.activePadId
     let currentPadConfig = state.pads[activePadId]
 
@@ -65,7 +67,8 @@ const mapStateToProps = (state,ownProps) => {
     samplePath,
     selectedFile,
     allFiles,
-    childDirs
+    childDirs,
+    padId
   }
 }
 
@@ -83,6 +86,10 @@ const mapDispatchToProps = (dispatch,ownProps) => {
       console.log("cancel")
       dispatch(cancelPendingChanges())
     },
+    onSubmit: function(padId, padData) {
+      console.log("submit")
+      dispatch(submitPadData(padId, padData))
+    }
   }
 }
 
