@@ -7,3 +7,8 @@ export const changeSampleDirectory = id => ({
   type: 'CHANGE_SAMPLE_DIRECTORY',
   id
 })
+
+export const fileSelected = id => ({
+  type: 'SELECT_FILE',
+  id
+})

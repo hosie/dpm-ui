@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Select, SelectItem, Breadcrumb, BreadcrumbItem, Form, FormGroup, RadioButtonGroup,  RadioButton, Button} from 'carbon-components-react';
 import './PadConfig.css';
 
-function PadConfig({changeSampleDirectory, isActive, mode, samplePath, sampleFileName, allFiles, childDirs}) {
+function PadConfig({changeSampleDirectory, fileSelected, isActive, mode, samplePath, selectedFile, allFiles, childDirs}) {
   if(isActive){
     return (
       <div className="pad-config">
@@ -79,26 +79,27 @@ function PadConfig({changeSampleDirectory, isActive, mode, samplePath, sampleFil
             </Breadcrumb>
             <Select
               className="some-class"
-              defaultValue={sampleFileName}
+              value={selectedFile.id}
               disabled={false}
-              id="select-1"
+              id="select-file"
               inline={true}
               invalid={false}
               invalidText="A valid value is required"
               labelText="Select sample"
-
-              light={false}
               onChange={function (event){
-                changeSampleDirectory(1)
+                console.log(`changed ${event.target.value}`)
+                fileSelected(Number(event.target.value))
 
               }}
+              light={false}
+
             >
               {
                 allFiles.map( (file,index) =>{
                   return <SelectItem
                     key={index}
-                    text={file}
-                    value={file}
+                    text={file.filename}
+                    value={file.id}
                   />
                 })
               }
@@ -131,6 +132,7 @@ function PadConfig({changeSampleDirectory, isActive, mode, samplePath, sampleFil
 
 PadConfig.propTypes = {
   changeSampleDirectory: PropTypes.func.isRequired,
+  fileSelected: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
   mode: PropTypes.string.isRequired,
   samplePath: PropTypes.arrayOf(PropTypes.shape(
@@ -139,8 +141,18 @@ PadConfig.propTypes = {
         name:PropTypes.string
     }
   )).isRequired,
-  sampleFileName: PropTypes.string.isRequired,
-  allFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedFile: PropTypes.shape(
+    {
+        id:PropTypes.number,
+        filename:PropTypes.string
+    }
+  ).isRequired,
+  allFiles: PropTypes.arrayOf(PropTypes.shape(
+    {
+        id:PropTypes.number,
+        filename:PropTypes.string
+    }
+  )).isRequired,
   childDirs:PropTypes.arrayOf(PropTypes.shape(
     {
         id:PropTypes.number,
