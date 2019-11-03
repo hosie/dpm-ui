@@ -14,151 +14,125 @@ function padBank(state = {
   }
 }
 
+function samples(state = {
+  directories:[
+    {
+      id:0,
+      parent:null,
+      name:"foo"
+    },
+    {
+      id:1,
+      parent:0,
+      name:"bar"
+    }
+  ],
+  files:[
+    {
+      id:0,
+      dir:1,
+      filename:"bang.wav"
+    },
+    {
+      id:1,
+      dir:1,
+      filename:"bleep.wav"
+    },
+    {
+      id:2,
+      dir:1,
+      filename:"clap.wav"
+    },
+
+
+  ]
+}, action) {
+  switch (action.type) {
+    default:
+      return state
+  }
+}
+
 function padConfig(state = {
   pads:[
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "bang.wav"
+      sampleId: 0
     },
     {
       mode:"loop",
-      samplePath:[
-        "samples",
-        "quz",
-        "baz"
-      ],
-      sampleFileName: "bleep.wav"
+      sampleId: 1
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     },
     {
       mode:"one-shot",
-      samplePath:[
-        "samples",
-        "foo",
-        "bar"
-      ],
-      sampleFileName: "4bars.wav"
+      sampleId: 2
+
     }
   ]
 }, action) {
@@ -171,6 +145,7 @@ function padConfig(state = {
 export default combineReducers(
   {
     padBank,
-    padConfig
+    padConfig,
+    samples
   }
 )

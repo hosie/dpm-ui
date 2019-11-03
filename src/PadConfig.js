@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import { Breadcrumb, BreadcrumbItem, Form, FormGroup, RadioButtonGroup,  RadioButton, Button} from 'carbon-components-react';
+import { Select, SelectItem, Breadcrumb, BreadcrumbItem, Form, FormGroup, RadioButtonGroup,  RadioButton, Button} from 'carbon-components-react';
 import './PadConfig.css';
 
-function PadConfig({isActive, mode, samplePath, sampleFileName}) {
+function PadConfig({isActive, mode, samplePath, sampleFileName, allFiles}) {
   if(isActive){
     return (
       <div className="pad-config">
@@ -29,18 +29,38 @@ function PadConfig({isActive, mode, samplePath, sampleFileName}) {
           <FormGroup legendText="Sample">
             <Breadcrumb>
               {
-                samplePath.map(pathElement => {
+                samplePath.map( (pathElement,index) => {
                   return(
-                    <BreadcrumbItem>
+                    <BreadcrumbItem key={index}>
                       <a href="/#">{pathElement}</a>
                     </BreadcrumbItem>
                   )
                 })
               }
-              <BreadcrumbItem href="#" isCurrentPage>
-                {sampleFileName}
-              </BreadcrumbItem>
             </Breadcrumb>
+            <Select
+              className="some-class"
+              defaultValue={sampleFileName}
+              disabled={false}
+              id="select-1"
+              inline={true}
+              invalid={false}
+              invalidText="A valid value is required"
+              labelText="Select sample"
+              light={false}
+              onChange={function noRefCheck(){}}
+            >
+              {
+                allFiles.map( (file,index) =>{
+                  return <SelectItem
+                    key={index}
+                    text={file}
+                    value={file}
+                  />
+                })
+              }
+
+            </Select>
           </FormGroup>
           <Button
             disabled={false}
@@ -70,7 +90,8 @@ PadConfig.propTypes = {
   isActive: PropTypes.bool.isRequired,
   mode: PropTypes.string.isRequired,
   samplePath: PropTypes.arrayOf(PropTypes.string).isRequired,
-  sampleFileName: PropTypes.string.isRequired
+  sampleFileName: PropTypes.string.isRequired,
+  allFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default PadConfig;
