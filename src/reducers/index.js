@@ -25,6 +25,11 @@ function samples(state = {
       id:1,
       parent:0,
       name:"bar"
+    },
+    {
+      id:2,
+      parent:0,
+      name:"quz"
     }
   ],
   files:[
@@ -53,8 +58,7 @@ function samples(state = {
   }
 }
 
-function padConfig(state = {
-  pads:[
+function pads(state = [
     {
       mode:"one-shot",
       sampleId: 0
@@ -134,11 +138,27 @@ function padConfig(state = {
       sampleId: 2
 
     }
-  ]
-}, action) {
+  ], action) {
   switch (action.type) {
     default:
       return state
+  }
+}
+
+let initialPadConfig = {
+  pending:false
+}
+
+function padConfig(state=initialPadConfig,action){
+  switch (action.type) {
+    case 'CHANGE_SAMPLE_DIRECTORY':
+      return {
+        ...state,
+        pending:true,
+        currentDirectory:action.id
+      }
+    default:
+    return state
   }
 }
 
@@ -146,6 +166,7 @@ export default combineReducers(
   {
     padBank,
     padConfig,
+    pads,
     samples
   }
 )

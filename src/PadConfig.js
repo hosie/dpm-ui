@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Select, SelectItem, Breadcrumb, BreadcrumbItem, Form, FormGroup, RadioButtonGroup,  RadioButton, Button} from 'carbon-components-react';
 import './PadConfig.css';
 
-function PadConfig({isActive, mode, samplePath, sampleFileName, allFiles}) {
+function PadConfig({changeSampleDirectory, isActive, mode, samplePath, sampleFileName, allFiles, childDirs}) {
   if(isActive){
     return (
       <div className="pad-config">
@@ -32,11 +32,50 @@ function PadConfig({isActive, mode, samplePath, sampleFileName, allFiles}) {
                 samplePath.map( (pathElement,index) => {
                   return(
                     <BreadcrumbItem key={index}>
-                      <a href="/#">{pathElement}</a>
+                      <a href="/#" onClick={function(){
+                        console.log(`changing ${pathElement.id}`)
+
+                        changeSampleDirectory(pathElement.id)
+                      }}>{pathElement.name}</a>
                     </BreadcrumbItem>
                   )
                 })
               }
+
+              <Select
+                className="some-class"
+                defaultValue='placeholder-item'
+                disabled={false}
+                id="select-dir"
+                inline={true}
+                light={true}
+                invalid={false}
+                invalidText="A valid value is required"
+                labelText="Select directory"
+                hideLabel={true}
+                onChange={function (event){
+                  console.log(`changing ${event.target.value}`)
+                  changeSampleDirectory(Number(event.target.value))
+
+                }}
+              >
+              <SelectItem
+                hidden
+                text=""
+                value="placeholder-item"
+              />
+                {
+                  childDirs.map( (dir,index) =>{
+                    return <SelectItem
+                      key={index}
+                      text={dir.name}
+                      value={dir.id}
+                    />
+                  })
+                }
+
+              </Select>
+
             </Breadcrumb>
             <Select
               className="some-class"
@@ -47,8 +86,12 @@ function PadConfig({isActive, mode, samplePath, sampleFileName, allFiles}) {
               invalid={false}
               invalidText="A valid value is required"
               labelText="Select sample"
+
               light={false}
-              onChange={function noRefCheck(){}}
+              onChange={function (event){
+                changeSampleDirectory(1)
+
+              }}
             >
               {
                 allFiles.map( (file,index) =>{
@@ -87,11 +130,23 @@ function PadConfig({isActive, mode, samplePath, sampleFileName, allFiles}) {
 }
 
 PadConfig.propTypes = {
+  changeSampleDirectory: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
   mode: PropTypes.string.isRequired,
-  samplePath: PropTypes.arrayOf(PropTypes.string).isRequired,
+  samplePath: PropTypes.arrayOf(PropTypes.shape(
+    {
+        id:PropTypes.number,
+        name:PropTypes.string
+    }
+  )).isRequired,
   sampleFileName: PropTypes.string.isRequired,
   allFiles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  childDirs:PropTypes.arrayOf(PropTypes.shape(
+    {
+        id:PropTypes.number,
+        name:PropTypes.string
+    }
+  )).isRequired
 }
 
 export default PadConfig;
