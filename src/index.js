@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 
 import './index.scss';
 import App from './App';
@@ -9,11 +10,13 @@ import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducers'
 import { Provider } from 'react-redux'
 import { fetchSamples } from './actions'
+const loggerMiddleware = createLogger()
 
 const store = createStore(
   rootReducer,
   applyMiddleware(
-      thunkMiddleware // lets us dispatch() functions
+      thunkMiddleware, // lets us dispatch() functions
+      loggerMiddleware
   )
 )
 store.dispatch(fetchSamples()).then(() => console.log(store.getState()))
