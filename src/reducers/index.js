@@ -15,44 +15,16 @@ function padBank(state = {
 }
 
 function samples(state = {
-  directories:[
-    {
-      id:0,
-      parent:null,
-      name:"foo"
-    },
-    {
-      id:1,
-      parent:0,
-      name:"bar"
-    },
-    {
-      id:2,
-      parent:0,
-      name:"quz"
-    }
-  ],
-  files:[
-    {
-      id:0,
-      dir:1,
-      filename:"bang.wav"
-    },
-    {
-      id:1,
-      dir:1,
-      filename:"bleep.wav"
-    },
-    {
-      id:2,
-      dir:1,
-      filename:"clap.wav"
-    },
-
-
-  ]
+  directories:[],
+  files:[]
 }, action) {
   switch (action.type) {
+    case 'FETCH_SAMPLES':
+      return {
+        ...state,
+        files:action.samples.files,
+        directories:action.samples.directories
+      }
     default:
       return state
   }
