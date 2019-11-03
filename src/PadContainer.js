@@ -11,7 +11,6 @@ const mapDispatchToProps = (dispatch,ownProps) => {
   return {
     onPadClick: () => {
       console.log('activatePad')
-      debugger
       dispatch(activatePad(ownProps.padId))
     }
   }

@@ -4,7 +4,6 @@ import { combineReducers } from 'redux'
 function padBank(state = {
   activePadId: null
 }, action) {
-  debugger
   switch (action.type) {
     case 'ACTIVATE_PAD':
       return Object.assign({}, state, {
