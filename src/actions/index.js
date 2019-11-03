@@ -12,3 +12,7 @@ export const fileSelected = id => ({
   type: 'SELECT_FILE',
   id
 })
+
+export const cancelPendingChanges = () => ({
+  type: 'CANCEL_PENDING_CHANGES'
+})
