@@ -4,7 +4,7 @@ import { changeSampleDirectory, fileSelected, cancelPendingChanges, submitPadDat
 import PadConfig from './PadConfig.js'
 const mapStateToProps = (state,ownProps) => {
   let mode = 'one-shot'
-  let samplePath = []
+  let samplePath = [state.samples.directories[0]]
   let selectedFile = {}
   let isActive=false
 
@@ -15,21 +15,30 @@ const mapStateToProps = (state,ownProps) => {
   if(state.padBank.activePadId !== null){
     padId=state.padBank.activePadId
     isActive = true
-    mode = state.pads[padId].mode
-    let activePadId = state.padBank.activePadId
-    let currentPadConfig = state.pads[activePadId]
+    let currentPadConfig = state.pads[padId]
+    if(typeof currentPadConfig !== 'undefined') {
 
-    selectedFile = state.samples.files[currentPadConfig.sampleId]
-    let parentDirId = selectedFile.dir
-    while (parentDirId !== null){
-      let parentDir = state.samples.directories[parentDirId]
-      samplePath.push(parentDir)
-      parentDirId = parentDir.parent
+      if(typeof currentPadConfig.mode !== 'undefined'){
+          mode = currentPadConfig.mode
+      }
+
+      if(typeof currentPadConfig.sampleId !== 'undefined'){
+        selectedFile = state.samples.files[currentPadConfig.sampleId]
+        let parentDirId = selectedFile.dir
+        samplePath=[]
+        while (parentDirId !== null){
+          let parentDir = state.samples.directories[parentDirId]
+          samplePath.push(parentDir)
+          parentDirId = parentDir.parent
+        }
+        samplePath = samplePath.reverse()
+        allFiles = state.samples.files.filter(file => {
+          return file.dir === selectedFile.dir
+        })
+      }
+
+
     }
-    samplePath = samplePath.reverse()
-    allFiles = state.samples.files.filter(file => {
-      return file.dir === selectedFile.dir
-    })
 
     if(state.padConfig.pending ){
       if(typeof state.padConfig.selectedFile !== 'undefined') {
