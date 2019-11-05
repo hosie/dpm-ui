@@ -79,7 +79,7 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
             </Breadcrumb>
             <Select
               className="some-class"
-              value={selectedFile.id}
+              value={typeof selectedFile.id === 'undefined'?'placeholder':selectedFile.id}
               disabled={false}
               id="select-file"
               inline={true}
@@ -94,6 +94,11 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
               light={false}
 
             >
+              <SelectItem
+                hidden
+                text=""
+                value="placeholder"
+              />
               {
                 allFiles.map( (file,index) =>{
                   return <SelectItem

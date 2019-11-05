@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { changeSampleDirectory, fileSelected, cancelPendingChanges, submitPadData } from './actions'
 
 import PadConfig from './PadConfig.js'
+
 const mapStateToProps = (state,ownProps) => {
   let mode = 'one-shot'
   let samplePath = [state.samples.directories[0]]
