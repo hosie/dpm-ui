@@ -43,10 +43,8 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
               }
 
               <Select
-                className=""
                 className={childDirs.length>0?"pad-config--directory-selector-enabled":"pad-config--directory-selector-disabled"}
-
-                defaultValue='placeholder-item'
+                value='placeholder-item'
                 disabled={childDirs.length === 0}
                 id="select-dir"
                 inline={true}
@@ -63,7 +61,7 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
               >
               <SelectItem
                 hidden
-                text=""
+                text="select folder"
                 value="placeholder-item"
               />
                 {
@@ -98,7 +96,7 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
             >
               <SelectItem
                 hidden
-                text=""
+                text="select sample"
                 value="placeholder"
               />
               {
