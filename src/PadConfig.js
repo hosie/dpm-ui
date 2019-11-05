@@ -43,15 +43,17 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
               }
 
               <Select
-                className="pad-config--directory-selector"
+                className=""
+                className={childDirs.length>0?"pad-config--directory-selector-enabled":"pad-config--directory-selector-disabled"}
+
                 defaultValue='placeholder-item'
-                disabled={false}
+                disabled={childDirs.length === 0}
                 id="select-dir"
                 inline={true}
                 light={true}
                 invalid={false}
                 invalidText="A valid value is required"
-                labelText="Select directory"
+                labelText="Folder"
                 hideLabel={true}
                 onChange={function (event){
                   console.log(`changing ${event.target.value}`)
@@ -78,14 +80,14 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
 
             </Breadcrumb>
             <Select
-              className="some-class"
+              className={allFiles.length>0?"pad-config--file-selector-enabled":"pad-config--file-selector-disabled"}
               value={typeof selectedFile.id === 'undefined'?'placeholder':selectedFile.id}
-              disabled={false}
+              disabled={allFiles.length===0}
               id="select-file"
               inline={true}
               invalid={false}
               invalidText="A valid value is required"
-              labelText="Select sample"
+              labelText="Sample"
               onChange={function (event){
                 console.log(`changed ${event.target.value}`)
                 fileSelected(Number(event.target.value))

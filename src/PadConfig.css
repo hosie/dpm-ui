@@ -9,3 +9,11 @@
 .pad-config--mode-selector {
   padding: 20px;
 }
+
+.pad-config--file-selector-disabled {
+  visibility: hidden;
+}
+
+.pad-config--directory-selector-disabled {
+  visibility: hidden;
+}
