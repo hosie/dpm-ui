@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { Loop24, Number_124} from '@carbon/icons-react';
 import './Pad.css';
 
 function Pad({onPadClick, isActive,sample,mode}) {
@@ -9,7 +10,8 @@ function Pad({onPadClick, isActive,sample,mode}) {
         {
           typeof sample !== 'undefined' &&
           <div>
-            {mode?mode:'one-shot'}
+            {mode?(mode==='one-shot'?<Number_124/>:<Loop24 />):''}
+            <br/>
             {sample}
           </div>
         }
