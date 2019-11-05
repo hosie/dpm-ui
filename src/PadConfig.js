@@ -27,7 +27,7 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
           </FormGroup>
 
           <FormGroup legendText="Sample">
-            <Breadcrumb>
+            <Breadcrumb className="pad-config--directory-breadcrumb">
               {
                 samplePath.map( (pathElement,index) => {
                   return(
@@ -43,7 +43,7 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
               }
 
               <Select
-                className="some-class"
+                className="pad-config--directory-selector"
                 defaultValue='placeholder-item'
                 disabled={false}
                 id="select-dir"

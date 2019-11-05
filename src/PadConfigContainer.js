@@ -5,7 +5,7 @@ import PadConfig from './PadConfig.js'
 
 const mapStateToProps = (state,ownProps) => {
   let mode = 'one-shot'
-  let samplePath = [state.samples.directories[0]]
+  let samplePath = []
   let selectedFile = {}
   let isActive=false
 
@@ -13,6 +13,7 @@ const mapStateToProps = (state,ownProps) => {
 
   let allFiles=[]
   let padId=0
+  let currentDirectory=null
   if(state.padBank.activePadId !== null){
     padId=state.padBank.activePadId
     isActive = true
@@ -32,7 +33,11 @@ const mapStateToProps = (state,ownProps) => {
           samplePath.push(parentDir)
           parentDirId = parentDir.parent
         }
+        if(samplePath.length>0){
+          currentDirectory=samplePath[0]
+        }
         samplePath = samplePath.reverse()
+
         allFiles = state.samples.files.filter(file => {
           return file.dir === selectedFile.dir
         })
@@ -56,20 +61,24 @@ const mapStateToProps = (state,ownProps) => {
           parentDirId = parentDir.parent
         }
         samplePath = samplePath.reverse()
-        allFiles = state.samples.files.filter(file => {
-          return file.dir === state.padConfig.currentDirectory
-        })
-        childDirs = state.samples.directories.filter(dir=>{
-          return dir.parent === state.padConfig.currentDirectory
-        }).map(dir => {
-          return {
-            id: dir.id,
-            name: dir.name
-          }
-        })
+
+        currentDirectory = state.padConfig.currentDirectory
+
       }
 
     }
+
+    allFiles = state.samples.files.filter(file => {
+      return file.dir === currentDirectory
+    })
+    childDirs = state.samples.directories.filter(dir=>{
+      return dir.parent === currentDirectory
+    }).map(dir => {
+      return {
+        id: dir.id,
+        name: dir.name
+      }
+    })
   }
   return {
     isActive,
