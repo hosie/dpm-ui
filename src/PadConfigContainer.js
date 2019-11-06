@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { changeSampleDirectory, fileSelected, cancelPendingChanges, submitPadData } from './actions'
+import { changePadMode, changeSampleDirectory, fileSelected, cancelPendingChanges, submitPadData } from './actions'
 
 import PadConfig from './PadConfig.js'
 
@@ -47,6 +47,9 @@ const mapStateToProps = (state,ownProps) => {
     }
 
     if(state.padConfig.pending ){
+      if(typeof state.padConfig.mode !== 'undefined'){
+        mode = state.padConfig.mode
+      }
       if(typeof state.padConfig.selectedFile !== 'undefined') {
         selectedFile = state.samples.files.find(file => {
           return file.id === state.padConfig.selectedFile
@@ -93,6 +96,10 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = (dispatch,ownProps) => {
   return {
+    changeMode: function (newMode){
+      console.log(`change mode to ${newMode}`)
+      dispatch(changePadMode(newMode))
+    },
     changeSampleDirectory: function(directoryId){
       console.log("changeSampleDirectory")
       dispatch(changeSampleDirectory(directoryId))

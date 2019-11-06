@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Select, SelectItem, Breadcrumb, BreadcrumbItem, Form, FormGroup, RadioButtonGroup,  RadioButton, Button} from 'carbon-components-react';
 import './PadConfig.css';
 
-function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onSubmit, mode, samplePath, selectedFile, allFiles, childDirs, padId}) {
+function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, isActive, onSubmit, mode, samplePath, selectedFile, allFiles, childDirs, padId}) {
   if(isActive){
     return (
       <div className="pad-config">
@@ -14,7 +14,8 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
                 defaultSelected={mode}
                 valueSelected={mode}
                 legend="Group Legend"
-                name="pad-mode-selector">
+                name="pad-mode-selector"
+                onChange={changeMode}>
 
                 <RadioButton value="one-shot" id="radio-1" labelText="One Shot"/>
                 <RadioButton
@@ -145,6 +146,7 @@ function PadConfig({changeSampleDirectory, fileSelected, onCancel, isActive, onS
 }
 
 PadConfig.propTypes = {
+  changeMode:  PropTypes.func.isRequired,
   changeSampleDirectory: PropTypes.func.isRequired,
   fileSelected: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,

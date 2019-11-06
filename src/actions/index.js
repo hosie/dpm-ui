@@ -5,6 +5,10 @@ export const activatePad = id => ({
   id
 })
 
+export const changePadMode = newMode => ({
+  type: 'CHANGE_PAD_MODE',
+  newMode
+})
 export const changeSampleDirectory = id => ({
   type: 'CHANGE_SAMPLE_DIRECTORY',
   id

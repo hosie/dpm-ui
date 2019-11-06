@@ -43,11 +43,18 @@ function pads(state = [], action) {
 }
 
 let initialPadConfig = {
-  pending:false
+  pending:false,
+  mode:'one-shot'
 }
 
 function padConfig(state=initialPadConfig,action){
   switch (action.type) {
+    case 'CHANGE_PAD_MODE':
+      return {
+        ...state,
+        pending: true,
+        mode: action.newMode
+      }
     case 'CHANGE_SAMPLE_DIRECTORY':
       return {
         ...state,
