@@ -68,12 +68,11 @@ function padConfig(state=initialPadConfig,action){
         selectedFile:action.id
       }
     case 'ACTIVATE_PAD':
+    case 'CANCEL_PENDING_CHANGES':
       return {
         ...initialPadConfig,
         currentDirectory:state.currentDirectory
       }
-    case 'CANCEL_PENDING_CHANGES':
-      return initialPadConfig
     default:
     return state
   }
