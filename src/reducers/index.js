@@ -67,6 +67,7 @@ function padConfig(state=initialPadConfig,action){
         pending: true,
         selectedFile:action.id
       }
+    case 'SUBMIT_PAD_DATA':
     case 'ACTIVATE_PAD':
     case 'CANCEL_PENDING_CHANGES':
       return {
