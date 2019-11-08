@@ -43,7 +43,19 @@ const mapStateToProps = (state,ownProps) => {
           return file.dir === selectedFile.dir
         })
       }
+    }
 
+    if(typeof state.padConfig.currentDirectory !== 'undefined') {
+      samplePath = []
+      let parentDirId = state.padConfig.currentDirectory
+      while (parentDirId !== null){
+        let parentDir = state.samples.directories[parentDirId]
+        samplePath.push(parentDir)
+        parentDirId = parentDir.parent
+      }
+      samplePath = samplePath.reverse()
+
+      currentDirectory = state.padConfig.currentDirectory
 
     }
 
@@ -56,19 +68,7 @@ const mapStateToProps = (state,ownProps) => {
           return file.id === state.padConfig.selectedFile
         })
       }
-      if(typeof state.padConfig.currentDirectory !== 'undefined') {
-        samplePath = []
-        let parentDirId = state.padConfig.currentDirectory
-        while (parentDirId !== null){
-          let parentDir = state.samples.directories[parentDirId]
-          samplePath.push(parentDir)
-          parentDirId = parentDir.parent
-        }
-        samplePath = samplePath.reverse()
 
-        currentDirectory = state.padConfig.currentDirectory
-
-      }
 
     }
 

@@ -58,7 +58,6 @@ function padConfig(state=initialPadConfig,action){
     case 'CHANGE_SAMPLE_DIRECTORY':
       return {
         ...state,
-        pending: true,
         currentDirectory:action.id
       }
     case 'SELECT_FILE':
@@ -69,6 +68,10 @@ function padConfig(state=initialPadConfig,action){
         selectedFile:action.id
       }
     case 'ACTIVATE_PAD':
+      return {
+        ...initialPadConfig,
+        currentDirectory:state.currentDirectory
+      }
     case 'CANCEL_PENDING_CHANGES':
       return initialPadConfig
     default:
