@@ -14,6 +14,7 @@ const mapStateToProps = (state,ownProps) => {
   let allFiles=[]
   let padId=0
   let currentDirectory=null
+  let isConfigPending = state.padConfig.pending
   if(state.padBank.activePadId !== null){
     padId=state.padBank.activePadId
     isActive = true
@@ -46,7 +47,7 @@ const mapStateToProps = (state,ownProps) => {
 
     }
 
-    if(state.padConfig.pending ){
+    if(isConfigPending){
       if(typeof state.padConfig.mode !== 'undefined'){
         mode = state.padConfig.mode
       }
@@ -84,6 +85,7 @@ const mapStateToProps = (state,ownProps) => {
     })
   }
   return {
+    isConfigPending,
     isActive,
     mode,
     samplePath,

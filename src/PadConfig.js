@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Select, SelectItem, Breadcrumb, BreadcrumbItem, Form, FormGroup, RadioButtonGroup,  RadioButton, Button} from 'carbon-components-react';
 import './PadConfig.css';
 
-function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, isActive, onSubmit, mode, samplePath, selectedFile, allFiles, childDirs, padId}) {
+function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, isConfigPending, isActive, onSubmit, mode, samplePath, selectedFile, allFiles, childDirs, padId}) {
   if(isActive){
     return (
       <div className="pad-config">
@@ -113,7 +113,7 @@ function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, i
             </Select>
           </FormGroup>
           <Button
-            disabled={false}
+            disabled={isConfigPending === false}
             kind="primary"
             tabIndex={0}
             type="button"
@@ -130,7 +130,7 @@ function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, i
             Submit
           </Button>
           <Button
-            disabled={false}
+            disabled={isConfigPending === false}
             kind="secondary"
             tabIndex={0}
             onClick={onCancel}
@@ -151,6 +151,7 @@ PadConfig.propTypes = {
   fileSelected: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isConfigPending: PropTypes.bool.isRequired,
   isActive: PropTypes.bool.isRequired,
   mode: PropTypes.string.isRequired,
   samplePath: PropTypes.arrayOf(PropTypes.shape(
