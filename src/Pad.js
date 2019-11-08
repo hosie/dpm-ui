@@ -9,10 +9,13 @@ function Pad({onPadClick, isActive,sample,mode}) {
       <div onClick={onPadClick} className="pad--inner-border">
         {
           typeof sample !== 'undefined' &&
-          <div>
-            {mode?(mode==='one-shot'?<Number_124/>:<Loop24 />):''}
-            <br/>
-            {sample}
+          <div className="pad--info">
+            <div className="pad--mode">
+              {mode?(mode==='one-shot'?<Number_124/>:<Loop24 />):''}
+            </div>
+            <div className="pad--sample-name">
+              {sample}
+            </div>
           </div>
         }
 

@@ -22,7 +22,17 @@
 
 }
 
+.pad--info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .pad--inner-border {
+  display: flex;
+  justify-content: center;
+  
   border: 1px solid black;
   width: 120px;
 
