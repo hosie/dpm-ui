@@ -1,0 +1,6 @@
+9 n 36  note pause 0  0 1  norm 0 127
+9 n 40  note oneshot 4  0 1  norm 0 127
+9 n 41  note oneshot 2  0 1  norm 0 127
+9 n 48  note mute 0  0 1  norm 0 127
+9 n 49  note mute 1  0 1  norm 0 127
+9 n 51  note mute 0  0 1  norm 0 127
