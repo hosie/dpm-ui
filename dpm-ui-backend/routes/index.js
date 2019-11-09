@@ -64,4 +64,9 @@ router.get('/samples', function(req, res, next) {
 
 });
 
+router.post('/presets/:presetId', function(req, res, next) {
+  console.log(JSON.stringify(req.body))
+  res.status(200).send()
+
+});
 module.exports = router;

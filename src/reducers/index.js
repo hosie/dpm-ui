@@ -34,8 +34,8 @@ function pads(state = [], action) {
   switch (action.type) {
     case 'SUBMIT_PAD_DATA':
       console.log('SUBMIT_PAD_DATA')
-      let copy = Object.assign({},state)
-      copy[action.padId]=action.padData
+      let copy = state.map(pad=>{return {...pad}})
+      copy[Number(action.padId)]=action.padData
       return copy
     default:
       return state
