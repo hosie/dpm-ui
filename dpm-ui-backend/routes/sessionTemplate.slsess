@@ -3,7 +3,7 @@
   <Globals tempo="75" eighth_per_cycle="16" common_dry="0" common_wet="1" input_gain="1" sync_source="1" auto_disable_latency="1" jack_timebase_master="0" output_midi_clock="0" use_midi_start="0" use_midi_stop="0" send_midi_start_on_trigger="0" smart_eighths="1"/>
   <Loopers>
   {{#loops}}
-  <Looper index="{{number}}" channels="2" loop_secs="40" discrete_io="yes" use_common_ins="yes" use_common_outs="yes" relative_sync="no" auto_latency="yes" tempo_stretch="no" stretch_ratio="1" pitch_shift="0" loop_audio="{{filename}}">
+  <Looper index="{{number}}" channels="2" loop_secs="40" discrete_io="yes" use_common_ins="yes" use_common_outs="yes" relative_sync="no" auto_latency="yes" tempo_stretch="no" stretch_ratio="1" pitch_shift="0" loop_audio="{{{filename}}}">
     <Panner linked="no" link_direction="0" bypassed="no">
       <StreamPanner x="0.000000" type="Equal Power Stereo" muted="no"/>
       <StreamPanner x="1.000000" type="Equal Power Stereo" muted="no"/>
