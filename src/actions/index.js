@@ -56,7 +56,7 @@ export function fetchSamples() {
 
     dispatch(requestSamples())
 
-    return fetch(`http://localhost:3001/samples`)
+    return fetch(`/samples`)
       .then(
         response => {
           console.log(`received samples ${response}`)
@@ -87,7 +87,7 @@ export function savePreset(preset) {
 
     dispatch(postPreset())
 
-    return fetch(`http://localhost:3001/presets/1`,
+    return fetch(`/presets/1`,
       {
         method: "post",
         headers: {
