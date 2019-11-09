@@ -8,7 +8,7 @@ function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, i
   if(isActive){
     let currentFileUrl
     if(typeof selectedFile.url !== 'undefined'){
-      currentFileUrl = `http://localhost:3001${selectedFile.url}`
+      currentFileUrl = selectedFile.url
       console.log(`currentFileUrl ${currentFileUrl}`)
     }
     return (
