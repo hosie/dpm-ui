@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var midibinding = require('./midibinding.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -70,6 +71,9 @@ router.use('/files',express.static(process.env['SAMPLES_PATH']))
 
 router.post('/presets/:presetId', function(req, res, next) {
   console.log(JSON.stringify(req.body))
+  let midifilepath=process.env['MIDI_BINDING']
+  midibinding.write(midifilepath,req.body.pads)
+
   res.status(200).send()
 
 });
