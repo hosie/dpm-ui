@@ -13,6 +13,7 @@ function PadBank() {
     }
     padBank.push(<div key={row} className="pad-bank--pad-row">{padRow}</div>)
   }
+  padBank=padBank.reverse()
   return <div className="pad-bank">{padBank}</div>;
 }
 
