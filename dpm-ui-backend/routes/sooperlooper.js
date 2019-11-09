@@ -8,12 +8,15 @@ module.exports.write = function(dirpath,pads) {
   }
   pads.forEach( (pad,index) =>{
     if(pad===null){
-
+      data.loops.push({
+        number:index,
+        filename: ''
+      })
     }else {
       data.loops.push({
         number:index,
         filename: pad.path
-      })  
+      })
     }
 
   })
