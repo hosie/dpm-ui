@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 let directories=[];
 let files=[];
 
-let baseDirPath = '/Users/johnhosie/tmp/test'
+let baseDirPath = process.env['SAMPLES_PATH']
 var fs = require('fs')
 function traverseDirectory(dirId, dirPath){
   fs.readdir(dirPath, function(err, children){
@@ -39,12 +39,14 @@ function traverseDirectory(dirId, dirPath){
           traverseDirectory(id, childPath)
 
         } else {
+
           console.log(`adding file ${childPath}`)
           let fileId = files.length
           files.push({
             id:fileId,
             dir:dirId,
-            filename:filename
+            filename:filename,
+            url:`/files${childPath.substring(baseDirPath.length)}`
           })
           console.log(`added file ${childPath}`)
 
@@ -63,6 +65,8 @@ router.get('/samples', function(req, res, next) {
   })
 
 });
+
+router.use('/files',express.static(process.env['SAMPLES_PATH']))
 
 router.post('/presets/:presetId', function(req, res, next) {
   console.log(JSON.stringify(req.body))
