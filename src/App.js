@@ -11,10 +11,12 @@ function App() {
 
       <HeaderContainer>
       </HeaderContainer>
-      <PadBank>
-      </PadBank>
-      <PadConfigContainer>
-      </PadConfigContainer>
+      <div className="app--body">
+        <PadBank>
+        </PadBank>
+        <PadConfigContainer>
+        </PadConfigContainer>
+      </div>
 
     </div>
   );

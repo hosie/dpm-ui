@@ -5,21 +5,20 @@ import './Header.css';
 
 function Header({onSave}) {
   return (
-    <Form>
-      <FormGroup legendText="header">
-        <Button
-          disabled={false}
-          kind="primary"
-          tabIndex={0}
-          type="button"
-          onClick={function(){
-            onSave()
-          }}
-        >
-          Save
-        </Button>
-      </FormGroup>
-    </Form>
+
+    <div className="header">
+      <Button
+        disabled={false}
+        kind="primary"
+        tabIndex={0}
+        type="button"
+        onClick={function(){
+          onSave()
+        }}
+      >
+        Save
+      </Button>
+    </div>
   );
 }
 
