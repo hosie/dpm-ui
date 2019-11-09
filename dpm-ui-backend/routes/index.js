@@ -94,6 +94,7 @@ router.post('/presets/:presetId', function(req, res, next) {
   })
 
   sooperlooper.write(sessiondir,pads)
+  fs.writeFileSync(`${sessiondir}/preset.json`,JSON.stringify(req.body,null,2),{encoding:'utf-8'})
 
   res.status(200).send()
 
