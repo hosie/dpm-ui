@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { Select, SelectItem, Breadcrumb, BreadcrumbItem, Form, FormGroup, RadioButtonGroup,  RadioButton, Button} from 'carbon-components-react';
 import './PadConfig.css';
+import Sample from './Sample.js'
 
 function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, isConfigPending, isActive, onSubmit, mode, samplePath, selectedFile, allFiles, childDirs, padId}) {
   if(isActive){
+    let currentFileUrl
+    if(typeof selectedFile.url !== 'undefined'){
+      currentFileUrl = `http://localhost:3001${selectedFile.url}`
+      console.log(`currentFileUrl ${currentFileUrl}`)
+    }
     return (
       <div className="pad-config">
         <Form>
@@ -112,6 +118,10 @@ function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, i
 
             </Select>
           </FormGroup>
+          {typeof currentFileUrl !== 'undefined' &&
+            <Sample src={currentFileUrl}/>
+
+          }
           <Button
             disabled={isConfigPending === false}
             kind="primary"
