@@ -21,7 +21,7 @@ module.exports.write = function(dirpath,pads) {
 
   })
   let output=mustache.render(template,data)
-  let filepath = `${dirpath}/session1.slses`
+  let filepath = `${dirpath}/session1.slsess`
   fs.writeFileSync(filepath,output,{encoding:'utf-8'})
 
 }
