@@ -1,6 +1,7 @@
 let fs = require('fs')
 
-module.exports.write = function(filepath,pads){
+module.exports.write = function(sessiondir,pads){
+  let filepath = `${sessiondir}/midi.slb`
   let midiBindings = ''
   pads.forEach( (pad,index) =>{
     if(pad !== null){

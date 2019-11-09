@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var midibinding = require('./midibinding.js')
+var sooperlooper = require('./sooperlooper.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -47,9 +48,10 @@ function traverseDirectory(dirId, dirPath){
             id:fileId,
             dir:dirId,
             filename:filename,
-            url:`/files${childPath.substring(baseDirPath.length)}`
+            url:`/files${childPath.substring(baseDirPath.length)}`,
+            path: `${childPath}/${filename}`
           })
-          console.log(`added file ${childPath}`)
+          console.log(`added file ${fileId} => ${childPath}`)
 
         }
       })
@@ -71,8 +73,27 @@ router.use('/files',express.static(process.env['SAMPLES_PATH']))
 
 router.post('/presets/:presetId', function(req, res, next) {
   console.log(JSON.stringify(req.body))
-  let midifilepath=process.env['MIDI_BINDING']
-  midibinding.write(midifilepath,req.body.pads)
+  let sessiondir=process.env['SESSION_DIR']
+  midibinding.write(sessiondir,req.body.pads)
+  let pads=req.body.pads.map(pad => {
+    if(pad === null){
+      return null
+    }
+
+    let matchingFile = files.find(file => {
+      return file.id===pad.sampleId
+    })
+    if(matchingFile) {
+      return {
+        path: matchingFile.path
+      }
+    }
+    console.log(`no file found for ${pad.sampleId}`)
+    return null
+
+  })
+
+  sooperlooper.write(sessiondir,pads)
 
   res.status(200).send()
 

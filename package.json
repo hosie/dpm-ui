@@ -8,6 +8,7 @@
     "carbon-components-react": "^7.7.3",
     "carbon-icons": "^7.0.7",
     "cross-fetch": "^3.0.4",
+    "mustache": "^3.1.0",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
