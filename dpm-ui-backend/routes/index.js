@@ -49,7 +49,7 @@ function traverseDirectory(dirId, dirPath){
             dir:dirId,
             filename:filename,
             url:`/files${childPath.substring(baseDirPath.length)}`,
-            path: `${childPath}/${filename}`
+            path: childPath
           })
           console.log(`added file ${fileId} => ${childPath}`)
 
