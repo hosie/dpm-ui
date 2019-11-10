@@ -1,0 +1,47 @@
+{
+  "pads": [
+    {
+      "mode": "loop",
+      "sampleId": 463
+    },
+    {
+      "mode": "loop",
+      "sampleId": 461
+    },
+    {
+      "mode": "loop",
+      "sampleId": 462
+    },
+    {
+      "mode": "loop",
+      "sampleId": 469
+    },
+    {
+      "mode": "loop",
+      "sampleId": 471
+    },
+    null,
+    null,
+    null,
+    {
+      "mode": "one-shot",
+      "sampleId": 542
+    },
+    {
+      "mode": "one-shot",
+      "sampleId": 553
+    },
+    {
+      "mode": "one-shot",
+      "sampleId": 561
+    },
+    {
+      "mode": "one-shot",
+      "sampleId": 570
+    },
+    {
+      "mode": "one-shot",
+      "sampleId": 160
+    }
+  ]
+}
