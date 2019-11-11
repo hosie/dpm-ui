@@ -15,7 +15,7 @@ function PadConfig({changeMode, changeSampleDirectory, fileSelected, onCancel, i
       <div className="pad-config">
         <Form>
           <FormGroup legendText="Pad mode">
-            <div className="pad-config--mode-selector">
+            <div data-testid="mode-selector" className="pad-config--mode-selector">
               <RadioButtonGroup
                 defaultSelected={mode}
                 valueSelected={mode}
