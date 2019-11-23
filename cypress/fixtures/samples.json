@@ -1,0 +1,56 @@
+{
+  "files":[
+    {
+      "id": 0,
+      "dir": 0,
+      "filename": "kick.wav",
+      "url":"/files/0",
+      "path": "/user/audio/samples/drum/kick.wav"
+    },
+    {
+      "id": 1,
+      "dir": 0,
+      "filename": "snare.wav",
+      "url":"/files/1",
+      "path": "/user/audio/samples/drum/snare.wav"
+    },
+    {
+      "id": 2,
+      "dir": 1,
+      "filename": "square.wav",
+      "url":"/files/2",
+      "path": "/user/audio/samples/synth/square.wav"
+    },
+    {
+      "id": 3,
+      "dir": 1,
+      "filename": "saw.wav",
+      "url":"/files/3",
+      "path": "/user/audio/samples/synth/saw.wav"
+    },
+    {
+      "id": 4,
+      "dir": 2,
+      "filename": "saw.wav",
+      "url":"/files/4",
+      "path": "/user/audio/samples/synth/pads/vox.wav"
+    }
+  ],
+  "directories":[
+    {
+      "id":0,
+      "parent":null,
+      "name":"drum"
+    },
+    {
+      "id":1,
+      "parent":null,
+      "name":"synth"
+    },
+    {
+      "id":2,
+      "parent":1,
+      "name":"pads"
+    }
+  ]
+}
